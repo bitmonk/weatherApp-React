@@ -1,0 +1,29 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:  100px;
+    background-color: rgb(45, 43, 43);
+}
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    width: 600px;
+    flex-direction: column; 
+    border: solid black 2px;
+    border-radius: 30px;
+    background-color: rgb(66, 79, 143);
+}
+
+
+.search-container {
+    display: flex;
+    max-width: 400px;
+    width: 100%;
+  }
+
+  button:hover {
+    background-color: rgb(193, 203, 46);
+  }
