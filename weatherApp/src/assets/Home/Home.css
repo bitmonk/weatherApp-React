@@ -3,27 +3,47 @@ body{
     justify-content: center;
     align-items: center;
     margin-top:  100px;
-    background-color: rgb(45, 43, 43);
+    background-image: linear-gradient(180deg, #3b2f80 0%,#130754 60% )
 }
 .wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding-top:70px;
     height: 400px;
-    width: 600px;
+    width: 400px;
     flex-direction: column; 
-    border: solid black 2px;
+    border: none;
     border-radius: 30px;
-    background-color: rgb(66, 79, 143);
+    background-image: linear-gradient(180deg, #130754 0%, #3b2f80 200%)
+
 }
 
 
 .search-container {
     display: flex;
+    justify-content: center;
     max-width: 400px;
     width: 100%;
   }
 
-  button:hover {
-    background-color: rgb(193, 203, 46);
+  .search-box{
+    outline: none;
+    border: none;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 100;
+    padding-left: 10px
+  }
+  .search-icon{
+    height: 24px;
+    width: 25px;
+    cursor: pointer;
+    margin-top: 2px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin-left: 10px;
+  }
+  p{
+    color: white;
   }
