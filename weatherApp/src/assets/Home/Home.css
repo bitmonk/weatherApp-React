@@ -3,7 +3,8 @@ body{
     justify-content: center;
     align-items: center;
     margin-top:  100px;
-    background-image: linear-gradient(180deg, #3b2f80 0%,#130754 60% )
+    background-color: #080c22;
+    
 }
 .wrapper {
     display: flex;
@@ -14,7 +15,7 @@ body{
     flex-direction: column; 
     border: none;
     border-radius: 30px;
-    background-image: linear-gradient(180deg, #130754 0%, #3b2f80 200%)
+    background-image: linear-gradient(180deg, rgb(28, 11, 128) 0%, #3278b9 200%)
 
 }
 
@@ -46,4 +47,9 @@ body{
   }
   p{
     color: white;
+  }
+  .weather-icon {
+    display: flex;
+    height: 80px;
+    width: 80px;
   }

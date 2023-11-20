@@ -16,13 +16,13 @@ const Home = () => {
   const [ condition, setCondition ] = useState("")
   const [ longitude, setLongitude ] = useState("")
   const [ latitude, setLatitude ] = useState("")
+  const [ icon, setIcon ] = useState("")
  
 
   
     const getLocation = async () => {
       const response = await fetch(`${api.base}weather?q=${search}&appid=${api.apiKey}`)
       const data = await response.json()
-      
 
       setWeather(data)
 
@@ -30,6 +30,11 @@ const Home = () => {
       const celcius  = kelvin - 273.15
       const longitude = data.coord.lat
       const latitude = data.coord.lon
+      const wicon = data.weather[0].icon
+      const png = ".png"
+
+      const baseIconUrl = "https://openweathermap.org/img/wn/"
+      const finalIcon = baseIconUrl +  wicon + png
 
      let temp = parseFloat(celcius.toFixed(2))
      
@@ -39,6 +44,7 @@ const Home = () => {
      setCondition(data.weather[0].description)
      setLongitude(longitude)
      setLatitude(latitude)
+     setIcon(finalIcon)
      
  }
   
@@ -55,6 +61,7 @@ const Home = () => {
         <p>{weather.name}</p>
         <p>{temperature}</p>
         <p>{kelvin}</p>
+        <img className="weather-icon" src={icon} alt='Image not found' />
         <p>{condition}</p>
         <p>{longitude}</p>
         <p> {latitude}</p>
