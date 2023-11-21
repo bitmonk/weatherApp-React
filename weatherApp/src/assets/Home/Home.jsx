@@ -19,6 +19,7 @@ const Home = () => {
   const [ icon, setIcon ] = useState("")
   const [ currentTime, setCurrentTime ] = useState(new Date())
   const [ currentDate, setCurrentDate ] = useState(new Date())
+  const [ searchClicked, setSearchClicked ] = useState(false)
  
 
   
@@ -49,8 +50,14 @@ const Home = () => {
      setIcon(finalIcon)
 
      
-     
  }
+
+const handleSearchClick = () => {
+  setSearchClicked(!searchClicked)
+  getLocation()
+  
+ }
+
  useEffect(() => {
   const timeIntervalId = setInterval(() => {
     setCurrentTime(new Date());
@@ -66,16 +73,19 @@ const Home = () => {
   }
   
  }, [])
+
+ 
+ 
   
  
 
 
   return (
     <>
-      <div className="wrapper">
-      <div className="search-container">
+      <div className={`wrapper${searchClicked ? 'Clicked' : ''}`}>
+      <div className={`search-container${searchClicked ? 'Clicked' : ''}`}>
     <input className="search-box" type="search" placeholder="Search city" onChange= { (e) => setSearch(e.target.value)}  />
-   <img src='images/searchicon.png' className="search-icon" onClick={getLocation} />
+   <img src='images/searchicon.png' className="search-icon"  onClick={handleSearchClick} />
   </div>
   
         <p className='weather-data'>{weather.name}</p>
