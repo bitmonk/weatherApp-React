@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Home.css'
 
 
@@ -17,6 +17,8 @@ const Home = () => {
   const [ longitude, setLongitude ] = useState("")
   const [ latitude, setLatitude ] = useState("")
   const [ icon, setIcon ] = useState("")
+  const [ currentTime, setCurrentTime ] = useState(new Date())
+  const [ currentDate, setCurrentDate ] = useState(new Date())
  
 
   
@@ -45,8 +47,25 @@ const Home = () => {
      setLongitude(longitude)
      setLatitude(latitude)
      setIcon(finalIcon)
+
+     
      
  }
+ useEffect(() => {
+  const timeIntervalId = setInterval(() => {
+    setCurrentTime(new Date());
+  }, 1000)
+
+  const dateIntervalId = setInterval(() => {
+    setCurrentDate(new Date());
+  }, 24 * 60 * 60 * 1000)
+
+  return () => {
+    clearInterval(timeIntervalId)
+    clearInterval(dateIntervalId)
+  }
+  
+ }, [])
   
  
 
@@ -55,16 +74,19 @@ const Home = () => {
     <>
       <div className="wrapper">
       <div className="search-container">
-    <input className="search-box" type="search" placeholder="Search city" onChange= { (e) => setSearch(e.target.value)} />
+    <input className="search-box" type="search" placeholder="Search city" onChange= { (e) => setSearch(e.target.value)}  />
    <img src='images/searchicon.png' className="search-icon" onClick={getLocation} />
   </div>
-        <p>{weather.name}</p>
-        <p>{temperature}</p>
-        <p>{kelvin}</p>
+  
+        <p className='weather-data'>{weather.name}</p>
+        <p className='weather-data'>{temperature}</p>
+        <p className='weather-data'>{kelvin}</p>
         <img className="weather-icon" src={icon} alt='Image not found' />
-        <p>{condition}</p>
-        <p>{longitude}</p>
-        <p> {latitude}</p>
+        <p className='weather-data'>{condition}</p>
+        <p className='weather-data'>{longitude}</p>
+        <p className='weather-data'> {latitude}</p>
+        <p className='time'> {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})}</p>
+        <p className='date'> {currentDate.toLocaleDateString('en-US', { weekday : 'long', day : 'numeric', month : 'short' })}</p>
       </div>
     </>
   )

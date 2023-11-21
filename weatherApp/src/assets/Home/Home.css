@@ -21,6 +21,8 @@ body{
 
 .search-container {
     display: flex;
+    position: absolute;
+    top: 60%;
     justify-content: center;
     max-width: 400px;
     width: 100%;
@@ -44,11 +46,19 @@ body{
     border-radius: 20px;
     margin-left: 10px;
   }
-  p{
+  .weather-data{
+    display: none;
     color: white;
   }
   .weather-icon {
-    display: flex;
+    display: none;
     height: 80px;
     width: 80px;
+  }
+
+  .time{
+    color: white;
+  }
+  .date{
+    color: white;
   }
