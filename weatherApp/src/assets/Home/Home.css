@@ -57,8 +57,15 @@ body{
   }
 
   .time{
+    display: flex;
+    position: absolute;
+    font-size: 45px;
+    transform: translateY(-150%);
     color: white;
+
   }
   .date{
+    position: absolute;
+    transform: translateY(200%);
     color: white;
   }

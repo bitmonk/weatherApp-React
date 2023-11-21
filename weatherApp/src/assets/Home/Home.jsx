@@ -86,7 +86,7 @@ const Home = () => {
         <p className='weather-data'>{longitude}</p>
         <p className='weather-data'> {latitude}</p>
         <p className='time'> {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})}</p>
-        <p className='date'> {currentDate.toLocaleDateString('en-US', { weekday : 'long', day : 'numeric', month : 'short' })}</p>
+        <p className='date'> {currentDate.toLocaleDateString('en-US', { weekday : 'short', day : 'numeric', month : 'short' })}</p>
       </div>
     </>
   )
