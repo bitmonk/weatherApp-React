@@ -28,6 +28,7 @@ const Home = () => {
       const data = await response.json()
 
       setWeather(data)
+      console.log(data)
 
       const kelvin = data.main.temp
       const celcius  = kelvin - 273.15
@@ -54,7 +55,6 @@ const Home = () => {
 
 const handleSearchClick = () => {
   setSearchClicked(!searchClicked)
-  getLocation()
   
  }
 
@@ -84,8 +84,8 @@ const handleSearchClick = () => {
     <>
       <div className={`wrapper${searchClicked ? 'Clicked' : ''}`}>
       <div className={`search-container${searchClicked ? 'Clicked' : ''}`}>
-    <input className="search-box" type="search" placeholder="Search city" onChange= { (e) => setSearch(e.target.value)}  />
-   <img src='images/searchicon.png' className="search-icon"  onClick={handleSearchClick} />
+    <input className="search-box" type="search" placeholder="Search city" onChange= { (e) => setSearch(e.target.value)} onClick={handleSearchClick} />
+   <img src='images/searchicon.png' className="search-icon"  onClick={getLocation} />
   </div>
   
         <p className='weather-data'>{weather.name}</p>
@@ -95,8 +95,8 @@ const handleSearchClick = () => {
         <p className='weather-data'>{condition}</p>
         <p className='weather-data'>{longitude}</p>
         <p className='weather-data'> {latitude}</p>
-        <p className='time'> {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})}</p>
-        <p className='date'> {currentDate.toLocaleDateString('en-US', { weekday : 'short', day : 'numeric', month : 'short' })}</p>
+        <p className={`time${searchClicked ? 'Clicked' : ''}`}> {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})}</p>
+        <p className={`date${searchClicked ? 'Clicked' : ''}`}> {currentDate.toLocaleDateString('en-US', { weekday : 'short', day : 'numeric', month : 'short' })}</p>
       </div>
     </>
   )

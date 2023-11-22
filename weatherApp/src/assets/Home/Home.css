@@ -26,6 +26,7 @@ body{
     justify-content: center;
     max-width: 400px;
     width: 100%;
+    transition: transform 1s ease-in-out ;
   }
 
   .search-box{
@@ -47,27 +48,32 @@ body{
     margin-left: 10px;
   }
   .weather-data{
-    display: none;
+    display: flex;
     color: white;
   }
   .weather-icon {
-    display: none;
+    display: flex;
     height: 80px;
     width: 80px;
   }
 
   .time{
+    opacity: 100;
     display: flex;
     position: absolute;
     font-size: 45px;
     transform: translateY(-150%);
     color: white;
-
+    transition: transform 500ms ease-in, opacity 200ms ease-in;
+    
+     
   }
   .date{
+    opacity: 100;
     position: absolute;
     transform: translateY(200%);
     color: white;
+    transition: transform 500ms ease-in, opacity 200ms ease-in;
   }
   .wrapperClicked{
     display: flex;
@@ -87,4 +93,22 @@ body{
     justify-content: center;
     max-width: 400px;
     width: 100%;
+    transform: translateY(-600%);
+    transition: transform 1s ease-in-out ;
+  }
+
+  .timeClicked {
+    display: flex;
+    position: absolute;
+    font-size: 45px;
+    opacity: 0;
+    color: white;
+    transform: translateY(-250%);
+    transition: transform 500ms ease-in, opacity 500ms ease-in;
+  }
+  .dateClicked {
+    opacity: 0;
+    color: white;
+    transform: translateY(-250%);
+    transition: transform 500ms ease-in, opacity 500ms ease-in;
   }
