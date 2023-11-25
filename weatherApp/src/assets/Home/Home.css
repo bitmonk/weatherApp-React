@@ -48,13 +48,15 @@ body{
     margin-left: 10px;
   }
   .weather-data{
-    display: flex;
+    display: none;
     color: white;
   }
   .weather-icon {
-    display: flex;
-    height: 80px;
-    width: 80px;
+    position: relative;
+    left: 12%;
+    margin-top: 30px;
+    height: 140px;
+    width: 140px;
   }
 
   .time{
@@ -88,12 +90,13 @@ body{
   }
   .search-containerClicked {
     display: flex;
+    opacity: 65%;
     position: absolute;
     top: 60%;
     justify-content: center;
     max-width: 400px;
     width: 100%;
-    transform: translateY(-600%);
+    transform: translateY(-750%);
     transition: transform 1s ease-in-out ;
   }
 
@@ -111,4 +114,60 @@ body{
     color: white;
     transform: translateY(-250%);
     transition: transform 500ms ease-in, opacity 500ms ease-in;
+  }
+
+  .back-button{
+    position: relative;
+    padding-right: 5px;
+    width: 30px;
+    cursor: pointer;
+  }
+  .condition-data {
+    position: relative;
+    color:#ffff;
+    opacity: 75%;
+    bottom: 65%;
+    left: 22%;
+    width: 70px
+  }
+  .weather-wrapper {
+    position: relative;
+    width: 400px;
+    height: 200px;
+  }
+    
+ 
+  .location-icon {
+    opacity: 75%
+  }
+  .location-name {
+    position: relative;
+    font-size: 30px;
+   width: 60px;
+    opacity: 75%;
+    bottom: 50%;
+
+  }
+  .location-data {
+    display: flex; 
+    flex-direction: row;
+    color: #ffff;
+    position: relative;
+    left: 50%;
+    bottom: 75%;
+    width: 150px;
+    
+  }
+  .temperature-data {
+    position: absolute;
+    font-size: 65px;
+    left: 30%;
+  }
+  .feels-like {
+    position: absolute;
+    width:100px;
+    top: 125%;
+    left: 20%;
+    opacity: 85%;
+
   }
