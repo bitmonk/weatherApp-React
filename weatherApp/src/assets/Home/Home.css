@@ -23,15 +23,20 @@ body{
 
 
   .weather-data{
-    display: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: absolute; 
     color: white;
+    height: 100px;
+    width: 100px;
+    top: 80%;
   }
   .weather-icon {
     position: relative;
     left: 12%;
-    margin-top: 30px;
-    height: 140px;
-    width: 140px;
+    height: 120px;
+    width: 120px;
   }
 
   .time{
@@ -140,12 +145,16 @@ body{
     animation-duration: 1s;
   }
   .condition-data {
-    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
     color:#ffff;
     opacity: 75%;
-    bottom: 65%;
-    left: 22%;
-    width: 70px
+    bottom: 20%;
+    left: 15%;
+    width: 100px;
+    
   }
   .weather-wrapper {
     position: relative;
@@ -156,17 +165,29 @@ body{
     bottom: 6%;
   }
     
- 
+  .location-wrapper {
+    position: relative; 
+    height: 50px;
+    width: 600px;
+    
+
+  }
+
   .location-icon {
-    opacity: 75%
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    opacity: 75%;
+    top: 25%;
+    left: 5%;
   }
   .location-name {
-    position: absolute;
+    position: relative;
     font-size: 30px;
-   width: 60px;
+   width: 90px;
     opacity: 65%;
-  
-
+    bottom: 45%;
+    left: 20%;
   }
   .location-data {
     display: flex; 
@@ -174,19 +195,21 @@ body{
     color: #ffff;
     position: relative;
     left: 50%;
-    bottom: 75%;
+    bottom: 65%;
     width: 150px;
+    height: 150px;
     
   }
   .temperature-data {
     position: absolute;
     font-size: 65px;
-    left: 30%;
+    left: 20%;
+    top: -20%;
   }
   .feels-like {
     position: absolute;
     width:100px;
-    top: 125%;
+    top: 60%;
     left: 20%;
     opacity: 85%;
 
@@ -194,4 +217,34 @@ body{
   @keyframes back-opacity {
     from {opacity: 0;}
     to{opacity: 100}
+  }
+
+  .weather-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    
+  }
+
+  .weather-info-text {
+    color: #ffff;
+    font-size: 15px;
+    opacity: 55%;
+  }
+
+  .grid-item {
+    background-color: #0F16B5;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow:  6px 3px 5px rgba(2, 2, 2, 0.3) ;
+  }
+
+  .grid-image {
+    height: 40px;
+  }
+
+  .weather-info-title {
+    color: #ffff;
+    opacity: 75%;
   }

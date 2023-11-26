@@ -24,6 +24,11 @@ const Home = () => {
   const [ handleBack, setHandleBack ] = useState(false)
   const [ feelsLike, setFeelsLike ] = useState("")
   const [ weatherWrapper, setWeatherWrapper ] = useState(false)
+  const [ windSpeed, setWindSpeed ] = useState("")
+  const [ humidity, setHumidity ] = useState("")
+  const [ visibility, setVisibility ] = useState("")
+  const [ sunrise, setSunrise ] = useState("")
+  const [ sunset, setSunset ] = useState("")
 
   const [inputEnabled, setInputEnabled] = useState(true)
  
@@ -44,6 +49,11 @@ const Home = () => {
       const png = ".png"
       const degreeIcon = "°"
       const locationData = data.name
+      const wind = data.wind.speed
+      const humidityData = data.main.humidity
+      const visibilityData = data.visibility
+      const sunriseData = data.sys.sunrise
+      const sunsetData = data.sys.sunset
 
 
       const feelsLikeData = data.main.feels_like
@@ -64,6 +74,11 @@ const Home = () => {
      setIcon(finalIcon)     
      setLocationName(locationData)
      setFeelsLike(feelsLikeCelcius)
+     setWindSpeed(wind)
+     setHumidity(humidityData)
+     setVisibility(visibilityData)
+     setSunrise(sunriseData)
+     setSunset(sunsetData)
 
      setWeatherWrapper(true)
  }
@@ -113,21 +128,20 @@ const handleSearchClick = () => {
    <img src='images/searchicon.png' className="search-icon"  onClick={getLocation} />
   </div>
   
-  
-        <p className='weather-data'>{weather.name}</p>
-        
-        <p className='weather-data'>{kelvin}</p>
-
-
-
 
         {weatherWrapper &&(
         <div className='weather-wrapper'>
 
         <img className='weather-icon' src={icon} alt='Image not found' />
         <div className='location-data'>
+
+
+        <div className='location-wrapper'>
         <img className='location-icon' src='/images/location.svg' />
         <p className='location-name'>{locationName}</p>
+        </div>
+
+
         <p className='temperature-data'>{temperature}</p>
         <p className='feels-like'>Feels Like {feelsLike}</p>
 
@@ -138,11 +152,64 @@ const handleSearchClick = () => {
         <p className='condition-data'>{condition}</p>
         </div>
         )}
-
-        <p className='weather-data'>{longitude}</p>
-        <p className='weather-data'> {latitude}</p>
         <p className={`time${searchClicked ? 'Clicked' : ''}`}> {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})}</p>
         <p className={`date${searchClicked ? 'Clicked' : ''}`}> {currentDate.toLocaleDateString('en-US', { weekday : 'short', day : 'numeric', month : 'short' })}</p>
+
+        <div className='weather-info'>
+
+          <div className='grid-item'>
+          <img className='grid-image' src='/images/wind.svg' />
+          <p className='weather-info-title'>Wind</p>
+          <p className='weather-info-text'>{windSpeed}</p>
+          </div>
+
+
+
+          <div className='grid-item'>
+          <img className='grid-image' src='/images/humidity.svg' />
+          <p className='weather-info-title'>Humidity</p>
+          <p className='weather-info-text'>{humidity}</p>
+          </div>
+
+
+
+          <div className='grid-item'>
+          <img className='grid-image' id='visibility-icon' src='/images/visibility.svg' />
+          <p className='weather-info-title'>Visibility</p>
+          <p className='weather-info-text'>{visibility}</p>
+          </div>
+
+
+
+          <div className='grid-item'>
+          <img className='grid-image' src='/images/sunrise.svg' />
+          <p className='weather-info-title'>Sunrise</p>
+          <p className='weather-info-text'>{sunrise}</p>
+          </div>
+
+
+
+          <div className='grid-item'>
+          <img className='grid-image' id='sunset-icon' src='/images/sunsetAlt.svg' />
+          <p className='weather-info-title'>Sunset</p>
+          <p className='weather-info-text'>{sunset}</p>
+          </div>
+
+
+
+          <div className='grid-item'>
+          <img className='grid-image' src='/images/map.svg' />
+          <p className='weather-info-title'>Lon:</p>
+          <p className='weather-info-text'>{longitude}</p>
+          <p className='weather-info-title'>Lat:</p>
+          <p className='weather-info-text'>{latitude}</p>
+
+          </div>
+
+
+
+
+        </div>
       </div>
     </>
   )
