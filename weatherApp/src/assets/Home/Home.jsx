@@ -29,6 +29,7 @@ const Home = () => {
   const [ visibility, setVisibility ] = useState("")
   const [ sunrise, setSunrise ] = useState("")
   const [ sunset, setSunset ] = useState("")
+  const [ tiles, setTiles ] = useState(false)
 
   const [inputEnabled, setInputEnabled] = useState(true)
  
@@ -54,10 +55,15 @@ const Home = () => {
       const visibilityData = data.visibility
       const sunriseData = data.sys.sunrise
       const sunsetData = data.sys.sunset
+       
 
 
+      const sunriseTime = formatTime(sunriseData)
+      const sunsetTime = formatTime(sunsetData) 
       const feelsLikeData = data.main.feels_like
       const feelsLikeTemp = feelsLikeData - 273.15
+      
+
 
       const baseIconUrl = "https://openweathermap.org/img/wn/"
       const finalIcon = baseIconUrl +  wicon + png
@@ -77,10 +83,15 @@ const Home = () => {
      setWindSpeed(wind)
      setHumidity(humidityData)
      setVisibility(visibilityData)
-     setSunrise(sunriseData)
-     setSunset(sunsetData)
+     setSunrise(sunriseTime)
+     setSunset(sunsetTime)
 
+     setTiles(true)
      setWeatherWrapper(true)
+
+     handleSearchClick()
+      
+
  }
 
 const handleSearchClick = () => {
@@ -88,6 +99,7 @@ const handleSearchClick = () => {
     setSearchClicked(!searchClicked)
     setInputEnabled(false)
     setHandleBack(true)
+    
   }
  }
 
@@ -96,9 +108,18 @@ const handleSearchClick = () => {
   setInputEnabled(true)
   setHandleBack(false)
   setWeatherWrapper(false)
+  setTiles(false)
+ }
+
+ const formatTime = (timestamp) => {
+  const date = new Date(timestamp * 1000)
+  return date.toLocaleTimeString([], {hour: '2-digit', minute: 'numeric'})
  }
 
  useEffect(() => {
+
+  
+
   const timeIntervalId = setInterval(() => {
     setCurrentTime(new Date());
   }, 1000)
@@ -155,6 +176,8 @@ const handleSearchClick = () => {
         <p className={`time${searchClicked ? 'Clicked' : ''}`}> {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})}</p>
         <p className={`date${searchClicked ? 'Clicked' : ''}`}> {currentDate.toLocaleDateString('en-US', { weekday : 'short', day : 'numeric', month : 'short' })}</p>
 
+
+        {tiles &&(
         <div className='weather-info'>
 
           <div className='grid-item'>
@@ -199,17 +222,26 @@ const handleSearchClick = () => {
 
           <div className='grid-item'>
           <img className='grid-image' src='/images/map.svg' />
-          <p className='weather-info-title'>Lon:</p>
-          <p className='weather-info-text'>{longitude}</p>
-          <p className='weather-info-title'>Lat:</p>
-          <p className='weather-info-text'>{latitude}</p>
 
+          <p className='weather-info-title'>Location</p>
+          <div className='weather-info-location-longitude'>
+          <p className='weather-info-longitude'>Lon:</p>
+          <p className='weather-info-location-lon'>{longitude}</p>
+          </div>
+
+          <div className='weather-info-location-latitude'>
+          <p className='weather-info-latitude'>Lat:</p>
+          <p className='weather-info-location-lat'>{latitude}</p>
+          </div>
+        
+          
           </div>
 
 
 
 
         </div>
+        )}
       </div>
     </>
   )
