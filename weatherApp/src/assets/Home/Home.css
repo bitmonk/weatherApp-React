@@ -31,12 +31,16 @@ body{
     height: 100px;
     width: 100px;
     top: 80%;
+    animation-name: fade-opacity;
+    animation-duration: 1s;
   }
   .weather-icon {
     position: relative;
     left: 12%;
     height: 120px;
     width: 120px;
+    animation-name: fade-opacity;
+    animation-duration: 1s;
   }
 
   .time{
@@ -141,9 +145,12 @@ body{
     right: 82%;
     width: 25px;
     cursor: pointer;
-    animation-name: back-opacity;
+    animation-name: fade-opacity;
     animation-duration: 1s;
   }
+
+ 
+
   .condition-data {
     display: flex;
     text-align: center;
@@ -205,6 +212,8 @@ body{
     font-size: 65px;
     left: 20%;
     top: -20%;
+    animation-name: fade-opacity;
+    animation-duration: 1s;
   }
   .feels-like {
     position: absolute;
@@ -214,7 +223,7 @@ body{
     opacity: 85%;
 
   }
-  @keyframes back-opacity {
+  @keyframes fade-opacity {
     from {opacity: 0;}
     to{opacity: 100}
   }
@@ -237,17 +246,26 @@ body{
   }
 
   .grid-item {
-    background-color: rgb(40, 43, 132);
+    background: rgb(108,102,223);
+    background: linear-gradient(90deg, rgb(19, 16, 88) 0%, rgb(27, 43, 190) 100%, rgb(3, 65, 78) 100%);
     padding: 10px;
     text-align: center;
-    opacity: 98%;
+    opacity: 85%;
     height: 90px;
     border-radius: 15px;
     box-shadow:  6px 3px 5px rgba(2, 2, 2, 0.3) ;
+    animation: tile-fade ;
+    animation-duration: 1s;
+  }
+
+  @keyframes tile-fade {
+    from {opacity: 0;}
+    to {opacity: 85%;}
   }
 
   .grid-image {
     height: 35px;
+    opacity: 90%;
   }
 
   .weather-info-title {
