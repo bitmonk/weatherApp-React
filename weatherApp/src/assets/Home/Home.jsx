@@ -34,7 +34,7 @@ const Home = () => {
   const [inputEnabled, setInputEnabled] = useState(true)
  
 
-  
+    //Get weather data from API
     const getLocation = async () => {
       const response = await fetch(`${api.base}weather?q=${search}&appid=${api.apiKey}`)
       const data = await response.json()
@@ -110,6 +110,7 @@ const handleSearchClick = () => {
   setWeatherWrapper(false)
   setTiles(false)
  }
+
 
  const formatTime = (timestamp) => {
   const date = new Date(timestamp * 1000)
