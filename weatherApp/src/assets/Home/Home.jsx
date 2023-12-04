@@ -29,15 +29,37 @@ const Home = () => {
   const [ visibility, setVisibility ] = useState("")
   const [ sunrise, setSunrise ] = useState("")
   const [ sunset, setSunset ] = useState("")
-  const [ tiles, setTiles ] = useState(false)
+  const [ error, setError ] = useState(null)
 
+  const [ tiles, setTiles ] = useState(false)
   const [inputEnabled, setInputEnabled] = useState(true)
  
 
     //Get weather data from API
     const getLocation = async () => {
+
+      try{
       const response = await fetch(`${api.base}weather?q=${search}&appid=${api.apiKey}`)
+      
+      if (!response.ok){
+
+        let errorMessage = 'Failed to fetch data'
+        
+        try {
+
+        const errorData = await response.json()
+        errorMessage = errorData.message || errorMessage
+
+      } catch (jsonError) {
+        console.error("JSON Error", jsonError)
+      }
+
+      throw new Error(errorMessage)
+    }
+
       const data = await response.json()
+      
+
 
       setWeather(data)
       console.log(data)
@@ -88,9 +110,15 @@ const Home = () => {
 
      setTiles(true)
      setWeatherWrapper(true)
+     setError(null)
 
      handleSearchClick()
       
+     
+    }catch (error) {
+      console.error('Error fetching weather data :', error.message)
+      setError(`Error : ${error.message}`)
+    }
 
  }
 
@@ -109,6 +137,7 @@ const handleSearchClick = () => {
   setHandleBack(false)
   setWeatherWrapper(false)
   setTiles(false)
+  setError(null)
  }
 
 
@@ -119,7 +148,18 @@ const handleSearchClick = () => {
 
  useEffect(() => {
 
+  const handlePopstate = () => {
+
+    setError(null)
+
+  }
   
+  window.addEventListener('popstate', handlePopstate)
+
+  return () => {
+    window.removeEventListener('popstate', handlePopstate)
+  }
+
 
   const timeIntervalId = setInterval(() => {
     setCurrentTime(new Date());
@@ -147,10 +187,22 @@ const handleSearchClick = () => {
       <img className='back-button' src='images/backk.png' onClick={handleBackClick} />
      )}
 
-    <input className="search-box" type="search" placeholder="Search city" onChange= { (e) => setSearch(e.target.value)} onClick={handleSearchClick} />
+    <input className="search-box" type="search" placeholder="Search city" onChange= { (e) => setSearch(e.target.value)} 
+      onKeyDown={(e) => {
+          if(e.key === 'Enter'){getLocation()
+        }
+    }}
+    onClick={handleSearchClick}    
+    />
+
    <img src='images/searchicon.png' className="search-icon"  onClick={getLocation} />
   </div>
-  
+
+
+  {error && 
+<div className='error-text'>{error}
+</div>
+}
 
         {weatherWrapper &&(
         <div className='weather-wrapper'>
@@ -238,10 +290,14 @@ const handleSearchClick = () => {
         
           
           </div>
+          <div>
+      
+
+      
+      
 
 
-
-
+    </div>
         </div>
         )}
       </div>

@@ -300,4 +300,13 @@ body{
     left: 15%;
   }
   
-  
+  .error-text {
+    position: relative;
+    color: rgb(255, 34, 0);
+    font-style: italic;
+    top: 40%;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    animation-name: fade-opacity;
+    animation-duration: 1s;
+  }
