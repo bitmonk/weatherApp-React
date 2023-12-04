@@ -140,6 +140,7 @@ const handleSearchClick = () => {
   return (
     <>
       <div className={`wrapper${searchClicked ? 'Clicked' : ''}`}>
+      <div className='wrapper-image'></div>
       <div className={`search-container${searchClicked ? 'Clicked' : ''}`}>
 
      {handleBack && (
@@ -181,7 +182,7 @@ const handleSearchClick = () => {
         {tiles &&(
         <div className='weather-info'>
 
-          <div className='grid-item'>
+          <div className='grid-item tile'>
           <img className='grid-image' src='/images/wind.svg' />
           <p className='weather-info-title'>Wind</p>
           <p className='weather-info-text'>{windSpeed}</p>
@@ -189,7 +190,7 @@ const handleSearchClick = () => {
 
 
 
-          <div className='grid-item'>
+          <div className='grid-item tile'>
           <img className='grid-image' src='/images/humidity.svg' />
           <p className='weather-info-title'>Humidity</p>
           <p className='weather-info-text'>{humidity}</p>
@@ -197,7 +198,7 @@ const handleSearchClick = () => {
 
 
 
-          <div className='grid-item'>
+          <div className='grid-item tile'>
           <img className='grid-image' id='visibility-icon' src='/images/visibility.svg' />
           <p className='weather-info-title'>Visibility</p>
           <p className='weather-info-text'>{visibility}</p>
@@ -205,7 +206,7 @@ const handleSearchClick = () => {
 
 
 
-          <div className='grid-item'>
+          <div className='grid-item tile'>
           <img className='grid-image' src='/images/sunrise.svg' />
           <p className='weather-info-title'>Sunrise</p>
           <p className='weather-info-text'>{sunrise}</p>
@@ -213,7 +214,7 @@ const handleSearchClick = () => {
 
 
 
-          <div className='grid-item'>
+          <div className='grid-item tile'>
           <img className='grid-image' id='sunset-icon' src='/images/sunsetAlt.svg' />
           <p className='weather-info-title'>Sunset</p>
           <p className='weather-info-text'>{sunset}</p>
@@ -221,7 +222,7 @@ const handleSearchClick = () => {
 
 
 
-          <div className='grid-item'>
+          <div className='grid-item tile'>
           <img className='grid-image' src='/images/map.svg' />
 
           <p className='weather-info-title'>Location</p>
