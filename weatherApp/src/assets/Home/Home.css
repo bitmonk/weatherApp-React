@@ -2,17 +2,16 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top:  100px;
-    margin-right: 30%;
+    margin-top: 10%;
     background-image: url(/images/dark-mountain.jpg);
     background-repeat: no-repeat;
     background-size:cover;
+    background-attachment: fixed;
     
 }
 .wrapper {
     display: flex;
     align-items: center;
-    position: absolute;
     padding-top:70px;
     height: 440px;
     width: 400px;
@@ -28,7 +27,6 @@ body{
   
   display: flex;
   align-items: center;
-  position: absolute;
   padding-top:70px;
   height: 440px;
   width: 400px;
