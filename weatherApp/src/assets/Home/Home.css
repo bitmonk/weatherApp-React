@@ -4,10 +4,9 @@ body{
     align-items: center;
     margin-top:  100px;
     margin-right: 30%;
-    background-image: url(/images/gradient.jpg);
+    background-image: url(/images/dark-mountain.jpg);
     background-repeat: no-repeat;
-    background-size:100%;
-    
+    background-size:cover;
     
 }
 .wrapper {
@@ -225,7 +224,7 @@ body{
   }
   .feels-like {
     position: absolute;
-    width:100px;
+    width:120px;
     top: 60%;
     left: 20%;
     opacity: 85%;
