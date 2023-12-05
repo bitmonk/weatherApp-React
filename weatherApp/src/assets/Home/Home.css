@@ -253,7 +253,7 @@ body{
   .grid-item {
   padding: 10px;
     text-align: center;
-    height: 90px;
+    height: 96px;
     border-radius: 15px;
     box-shadow:  6px 3px 5px rgba(2, 2, 2, 0.3) ;
     animation: tile-fade ;
@@ -296,7 +296,7 @@ body{
     opacity: 55%;
     font-size: 12px;
     position: relative;
-    bottom: 50%;
+    bottom: 55%;
     left: 15%;
   }
   
