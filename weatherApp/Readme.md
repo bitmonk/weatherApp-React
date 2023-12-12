@@ -1,4 +1,4 @@
-# Project Title
+# WeatherApp
 
 A Simple Weather App that displays all the necessary weather information of a given location.
 
