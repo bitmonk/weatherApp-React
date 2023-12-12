@@ -19,4 +19,6 @@ A Weather App that fetches weather data from api and displays it in a simple UI.
 npm run dev
 ```
 
-[![My Skills](https://skillicons.dev/icons?i=html,css,js,react,vite,vscode,figma&theme=light)](https://skillicons.dev)
+## Technologies I am familier with
+
+[![My Skills](https://skillicons.dev/icons?i=html,css,js,react,vite,vscodefigma&theme=light)](https://skillicons.dev)
