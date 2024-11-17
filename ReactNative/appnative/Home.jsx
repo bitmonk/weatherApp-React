@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, Touchable } from "react-native";
+import { Alert, Text, Touchable } from "react-native";
 import { Button, TouchableOpacity, TextInput, View, StyleSheet } from "react-native";
 import Buttons from "./Buttons";
 
@@ -7,6 +7,17 @@ export default function Home({ navigation }) {
 
     const [count, setCount] = useState(0);
     const [email, setEmail] = useState("");
+
+    const handleRegister = () => {
+        Alert.alert("Register ?", "Really, Are you sure ?", [
+            {
+                text: "Cancel", onPress: () => console.log("Cancelled !"),
+            },
+            {
+                text: "Proceed", onPress: () => console.log("Processing...")
+            }
+        ])
+    }
 
     return (
         <View style={ styles.container }>
@@ -22,7 +33,7 @@ export default function Home({ navigation }) {
             />
 
             <Text>{ email }</Text>
-            <Buttons title="Register" />
+            <Button title="Register" onPress={ handleRegister } />
             <Buttons title="Login" />
             <Buttons title="Logout" />
             <Button title="About Page" onPress={ () => navigation.navigate("About", { name: "parbat tamang", age: 21 }) } />
