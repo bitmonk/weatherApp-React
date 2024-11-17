@@ -37,6 +37,7 @@ export default function Home({ navigation }) {
             <Buttons title="Login" />
             <Buttons title="Logout" />
             <Button title="About Page" onPress={ () => navigation.navigate("About", { name: "parbat tamang", age: 21 }) } />
+            <Button title="Blogs Page" onPress={ () => navigation.navigate("Blogs") } />
 
             <TouchableOpacity style={ styles.touchable } onPress={ () => alert("Register pressed") }>
                 <Text style={ { fontSize: 24, textAlign: 'center' } }>Register</Text>
