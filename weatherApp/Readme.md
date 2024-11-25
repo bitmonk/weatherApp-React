@@ -16,6 +16,9 @@ A Weather App that fetches weather data from api and displays it in a simple UI.
   After cloning the repository :
 
 ```
+npm install vite
+```
+```
 npm run dev
 ```
 
